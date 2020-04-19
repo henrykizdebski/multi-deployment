@@ -3,15 +3,17 @@ kind: Deployment
 metadata:
   name: client-deployment
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
-      component: web
+      component: client
   template:
     metadata:
       labels:
-        component: web
+        component: client
     spec:
       containers:
         - name: client
           image: pizdebski/multi-client
+          ports:
+            - containerPort: 3000
